@@ -1,3 +1,9 @@
+export interface IItem {
+  name: string
+  type: string
+  group: string
+}
+
 export default class Api {
   static wasteTypes() {
     return [
