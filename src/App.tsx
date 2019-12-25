@@ -8,7 +8,13 @@ const App: React.FC = () => {
   const [filtered, setFilters] = useState(initState);
 
   const onchange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value;
+    let query = event.target.value;
+    query = query.replace(/(a|á)/g, '(a|á)');
+    query = query.replace(/(e|é)/g, '(e|é)');
+    query = query.replace(/(i|í)/g, '(i|í)');
+    query = query.replace(/(o|ó)/g, '(o|ó)');
+    query = query.replace(/(u|ú)/g, '(u|ú)');
+
     const result = wasteTypes.filter(it =>
       new RegExp(query, 'i').test(it.name),
     );
