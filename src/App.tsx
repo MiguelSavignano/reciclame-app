@@ -44,7 +44,9 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <div>
-        <h1 style={{ color: '#43a047' }}>¿Que quieres tirar?</h1>
+        <h1 style={{ color: '#43a047' }}>
+          Tipos de residuos y donde depositarlos
+        </h1>
       </div>
 
       <div className="row">
@@ -58,7 +60,7 @@ const App: React.FC = () => {
                 type="text"
                 onChange={onchange}
               />
-              <label htmlFor="icon_prefix2">donde puedo tirar</label>
+              <label htmlFor="icon_prefix2">Donde puedo depositar:</label>
             </div>
           </div>
         </form>
