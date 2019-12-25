@@ -28,16 +28,20 @@ const App: React.FC = () => {
       <br />
 
       <table>
-        <tr>
-          <th>Tipo de contenedor</th>
-          <th>elemento</th>
-        </tr>
-        {filtered.map((it: any) => (
+        <thead>
           <tr>
-            <td>{it.group}</td>
-            <td>{it.name}</td>
+            <th>Tipo de contenedor</th>
+            <th>elemento</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {filtered.map((it: any) => (
+            <tr>
+              <td>{it.group}</td>
+              <td>{it.name}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
