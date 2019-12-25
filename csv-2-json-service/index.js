@@ -3,7 +3,7 @@ const _ = require('lodash')
 const { typeShortDescription } = require("./mappings")
 const { CSVColumn } = require('./utils/readCsv')
 
-const csvFilePath = './data/Tipos_Residuos.csv'
+const csvFilePath = __dirname + '/data/Tipos_Residuos.csv'
 const content = fs.readFileSync(csvFilePath, 'latin1')
 
 const run = async () => {
@@ -27,14 +27,15 @@ const run = async () => {
     return memo
   }, []), 'name')
 
-  fs.writeFileSync('../src/data/tipos_residuos.json', JSON.stringify(resultparsed, null, 2))
+  const items = _.orderBy(resultparsed, ['name', 'group'])
+  fs.writeFileSync('src/data/tipos_residuos.json', JSON.stringify(items, null, 2))
 
   const groups = Object.keys(_.groupBy(resultparsed, 'group'))
-  fs.writeFileSync('../src/data/groups.json', JSON.stringify(groups, null, 2))
+  fs.writeFileSync('src/data/groups.json', JSON.stringify(groups, null, 2))
 
 
   const types = Object.keys(_.groupBy(resultparsed, 'type'))
-  fs.writeFileSync('../src/data/types.json', JSON.stringify(types, null, 2))
+  fs.writeFileSync('src/data/types.json', JSON.stringify(types, null, 2))
 }
 
 run()
