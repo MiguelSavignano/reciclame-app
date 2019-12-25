@@ -21,23 +21,26 @@ jobs:
     - name: Build
       run: npm build
 
-    # - name: login
-    #   uses: actions/heroku@master
-    # - name: login
-    #   uses: actions/heroku@master
-    #   env:
-    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-    #   with:
-    #     args: container:login
-    # - name: push
-    #   uses: actions/heroku@master
-    #   env:
-    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-    #   with:
-    #     args: container:push web
-    # - name: release
-    #   uses: actions/heroku@master
-    #   env:
-    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-    #   with:
-    #     args: container:release web
+    - name: Set app name
+      run: echo "::set-env name=APP_NAME::reciclame-app"
+
+    - name: login
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:login
+
+    - name: push
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:push -a $APP_NAME web
+
+    - name: release
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:release -a $APP_NAME web
