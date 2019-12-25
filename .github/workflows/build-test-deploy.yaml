@@ -18,10 +18,8 @@ jobs:
     - name: Linter
       run: npm test
 
-
-    - name: Linter
-     run: npm build
-
+    - name: Build
+      run: npm build
 
     # - name: login
     #   uses: actions/heroku@master
