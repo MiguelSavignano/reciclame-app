@@ -18,7 +18,7 @@ const App: React.FC = () => {
   return (
     <div className="container">
       <div>
-        <h1>¿Que quieres tirar?</h1>
+        <h1 style={{ color: '#43a047' }}>¿Que quieres tirar?</h1>
       </div>
 
       <div className="row">
@@ -50,7 +50,9 @@ const App: React.FC = () => {
                   <p>{it.name}</p>
                 </div>
                 <div className="card-action">
-                  <a href="#">{it.group}</a>
+                  <a style={{ color: '#43a047' }} href="#">
+                    {it.group}
+                  </a>
                 </div>
               </div>
             </div>
