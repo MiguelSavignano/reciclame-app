@@ -1,8 +1,16 @@
-on: push
-name: Deploy to Heroku
+name: React APP
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - v*
 
 jobs:
-  release:
+  test:
+    env:
+      APP_NAME: reciclame-app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -20,9 +28,8 @@ jobs:
 
     - name: Build
       run: npm build
-
-    - name: Set app name
-      run: echo "::set-env name=APP_NAME::reciclame-app"
+  deploy:
+    if: contains(github.ref, 'master')
 
     - name: login
       uses: actions/heroku@master
