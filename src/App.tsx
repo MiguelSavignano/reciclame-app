@@ -2,6 +2,26 @@ import React, { useState } from 'react';
 import './App.css';
 import Api, { IItem } from './services/Api';
 
+const ItemCard = ({ item }: { item: IItem }): JSX.Element => (
+  <div className="col s12 m6 l6">
+    <div className="card horizontal">
+      <div className="card-image">
+        <img src="http://lorempixel.com/100/150/nature/9/" />
+      </div>
+      <div className="card-stacked">
+        <div className="card-content">
+          <p>{item.name}</p>
+        </div>
+        <div className="card-action">
+          <a style={{ color: '#43a047' }} href="#">
+            {item.group}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const App: React.FC = () => {
   const wasteTypes = Api.wasteTypes();
   const initState: IItem[] = wasteTypes;
@@ -45,24 +65,8 @@ const App: React.FC = () => {
       </div>
 
       <div className="row">
-        {filtered.map(it => (
-          <div key={it.name} className="col s12 m6 l6">
-            <div className="card horizontal">
-              <div className="card-image">
-                <img src="http://lorempixel.com/100/150/nature/9/" />
-              </div>
-              <div className="card-stacked">
-                <div className="card-content">
-                  <p>{it.name}</p>
-                </div>
-                <div className="card-action">
-                  <a style={{ color: '#43a047' }} href="#">
-                    {it.group}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+        {filtered.map(item => (
+          <ItemCard key={item.name} item={item} />
         ))}
       </div>
     </div>
