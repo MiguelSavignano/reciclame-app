@@ -27,7 +27,14 @@ const run = async () => {
     return memo
   }, []), 'name')
 
-  fs.writeFileSync('./data/tipos_residuos.json', JSON.stringify(resultparsed, null, 2))
+  fs.writeFileSync('../src/data/tipos_residuos.json', JSON.stringify(resultparsed, null, 2))
+
+  const groups = Object.keys(_.groupBy(resultparsed, 'group'))
+  fs.writeFileSync('../src/data/groups.json', JSON.stringify(groups, null, 2))
+
+
+  const types = Object.keys(_.groupBy(resultparsed, 'type'))
+  fs.writeFileSync('../src/data/types.json', JSON.stringify(types, null, 2))
 }
 
 run()
