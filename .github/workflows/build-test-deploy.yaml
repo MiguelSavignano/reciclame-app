@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - '*'
-    tags:
-      - v*
 
 jobs:
   test:
-    env:
-      APP_NAME: reciclame-app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -30,6 +26,8 @@ jobs:
       run: npm build
   deploy:
     if: contains(github.ref, 'master')
+    env:
+      APP_NAME: reciclame-app
     runs-on: ubuntu-latest
 
     steps:
