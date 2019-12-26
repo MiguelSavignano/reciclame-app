@@ -105,11 +105,6 @@
     "group": "AMARILLO"
   },
   {
-    "name": "de vino",
-    "type": "CONTENEDOR ENVASES (AMARILLO)",
-    "group": "AMARILLO"
-  },
-  {
     "name": "detergentes...",
     "type": "CONTENEDOR ENVASES (AMARILLO)",
     "group": "AMARILLO"
@@ -451,11 +446,6 @@
   },
   {
     "name": "cuadros o espejos",
-    "type": "RETIRADA GRATUITA 010: RECOGIDA DE MUEBLES Y ENSERES Y ROPA USADA",
-    "group": "MUEBLES"
-  },
-  {
-    "name": "etc",
     "type": "RETIRADA GRATUITA 010: RECOGIDA DE MUEBLES Y ENSERES Y ROPA USADA",
     "group": "MUEBLES"
   },
@@ -1250,17 +1240,7 @@
     "group": "PUNTO LIMPIO"
   },
   {
-    "name": "de bebés",
-    "type": "PUNTO LIMPIO FIJO",
-    "group": "PUNTO LIMPIO"
-  },
-  {
     "name": "estanterías",
-    "type": "PUNTO LIMPIO FIJO",
-    "group": "PUNTO LIMPIO"
-  },
-  {
-    "name": "etc (6 unidades)",
     "type": "PUNTO LIMPIO FIJO",
     "group": "PUNTO LIMPIO"
   },
@@ -1406,11 +1386,6 @@
   },
   {
     "name": "esmaltes de uñas",
-    "type": "CONTENEDOR VIDRIO (VERDE)",
-    "group": "VERDE"
-  },
-  {
-    "name": "etc.)",
     "type": "CONTENEDOR VIDRIO (VERDE)",
     "group": "VERDE"
   },

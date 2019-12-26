@@ -27,7 +27,8 @@ const run = async () => {
     return memo
   }, []), 'name')
 
-  const items = _.orderBy(resultparsed, ['group', 'name'])
+  const blackList = ['etc', 'etc (6 unidades)', 'etc.)', 'de bebés', 'de vino']
+  const items = _.orderBy(resultparsed, ['group', 'name']).filter(it => !blackList.includes(it.name))
   fs.writeFileSync('src/data/tipos_residuos.json', JSON.stringify(items, null, 2))
 
   const groups = Object.keys(_.groupBy(resultparsed, 'group'))

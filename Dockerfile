@@ -18,5 +18,5 @@ COPY nginx/conf.d/default.conf.template /etc/nginx/conf.d/default.conf.template
 ENV PORT=80
 CMD /bin/bash -c "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
 
-# docker build -t react-app-production -f docker/Dockerfile .
-# docker run --rm -p 8080:80 react-app-production
+# docker build -t reciclame-app .
+# docker run --rm -p 8080:80 reciclame-app
