@@ -2,11 +2,30 @@ import React, { useState } from 'react';
 import './App.css';
 import Api, { IItem } from './services/Api';
 
+const images = {
+  NARANJA: require('./images/naranja.jpg'),
+  MARRÓN: require('./images/marron.jpg'),
+  AMARILLO: require('./images/amarillo.jpg'),
+  AZUL: require('./images/azul.jpg'),
+  VERDE: require('./images/verde.jpg'),
+  'PUNTO LIMPIO': require('./images/punto_limpio.jpg'),
+  'PUNTE SIGRE': require('./images/azul.jpg'),
+  MARQUESINA: require('./images/azul.jpg'),
+  'CENTRO DE SALUD': require('./images/azul.jpg'),
+  'ANIMALES MUERTOS': require('./images/azul.jpg'),
+  TEXTILES: require('./images/azul.jpg'),
+  ACEITE: require('./images/azul.jpg'),
+  RAEES: require('./images/azul.jpg'),
+  TALLERES: require('./images/azul.jpg'),
+  OPTICA: require('./images/azul.jpg'),
+  MUEBLES: require('./images/punto_limpio.jpg'),
+};
+
 const ItemCard = ({ item }: { item: IItem }): JSX.Element => (
   <div className="col s12 m6 l6">
     <div className="card horizontal">
       <div className="card-image">
-        <img src="http://lorempixel.com/100/150/nature/9/" />
+        <img src={images[item.group]} />
       </div>
       <div className="card-stacked">
         <div className="card-content">
