@@ -27,7 +27,7 @@ const run = async () => {
     return memo
   }, []), 'name')
 
-  const items = _.orderBy(resultparsed, ['name', 'group'])
+  const items = _.orderBy(resultparsed, ['group', 'name'])
   fs.writeFileSync('src/data/tipos_residuos.json', JSON.stringify(items, null, 2))
 
   const groups = Object.keys(_.groupBy(resultparsed, 'group'))
