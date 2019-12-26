@@ -19,7 +19,7 @@ jobs:
     - name: Install
       run: npm ci
 
-    - name: Linter
+    - name: Test
       run: npm test
 
     - name: Build
