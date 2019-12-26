@@ -2,43 +2,57 @@ import React, { useState } from 'react';
 import './App.css';
 import Api, { IItem } from './services/Api';
 
-const images = {
-  NARANJA: require('./images/naranja.jpg'),
-  MARRÓN: require('./images/marron.jpg'),
-  AMARILLO: require('./images/amarillo.jpg'),
-  AZUL: require('./images/azul.jpg'),
-  VERDE: require('./images/verde.jpg'),
-  'PUNTO LIMPIO': require('./images/punto_limpio.jpg'),
-  'PUNTE SIGRE': require('./images/azul.jpg'),
-  MARQUESINA: require('./images/azul.jpg'),
-  'CENTRO DE SALUD': require('./images/azul.jpg'),
-  'ANIMALES MUERTOS': require('./images/azul.jpg'),
-  TEXTILES: require('./images/azul.jpg'),
-  ACEITE: require('./images/azul.jpg'),
-  RAEES: require('./images/azul.jpg'),
-  TALLERES: require('./images/azul.jpg'),
-  OPTICA: require('./images/azul.jpg'),
-  MUEBLES: require('./images/punto_limpio.jpg'),
+const placeLink =
+  'https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=38ed95bac1ba6610VgnVCM1000001d4a900aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default';
+
+const groups = {
+  NARANJA: { color: 'orange', icon: 'delete', placeLink },
+  MARRÓN: { color: 'brown', icon: 'delete', placeLink },
+  AMARILLO: { color: 'yellow', icon: 'delete', placeLink },
+  AZUL: { color: 'blue', icon: 'delete', placeLink },
+  VERDE: { color: 'green', icon: 'delete', placeLink },
+  'PUNTO LIMPIO': {
+    color: 'grey darken-1',
+    icon: 'place',
+    placeLink:
+      'https://datos.madrid.es/egob/new/detalle/auxiliar/mapa.jsp?geoUrl=/egob/catalogo/200284-0-puntos-limpios-fijos.geo',
+  },
+  'PUNTE SIGRE': { color: 'orange', icon: 'local_hospital', placeLink },
+  MARQUESINA: {
+    color: 'lime darken-2',
+    icon: 'battery_charging_full',
+    placeLink,
+  },
+  'CENTRO DE SALUD': { color: 'blue', icon: 'local_hospital', placeLink },
+  'ANIMALES MUERTOS': { color: 'orange', icon: 'delete', placeLink },
+  TEXTILES: {
+    color: 'orange',
+    icon: 'delete',
+    placeLink:
+      'https://datos.madrid.es/egob/new/detalle/auxiliar/mapa.jsp?geoUrl=/egob/catalogo/204410-2-contenedores-ropa.geo',
+  },
+  ACEITE: { color: 'orange', icon: 'delete', placeLink },
+  RAEES: { color: 'purple darken-2', icon: 'important_devices', placeLink },
+  TALLERES: { color: 'orange', icon: 'delete', placeLink },
+  OPTICA: { color: 'orange', icon: 'delete', placeLink },
+  MUEBLES: { color: 'orange', icon: 'delete', placeLink },
 };
 
 const ItemCard = ({ item }: { item: IItem }): JSX.Element => (
-  <div className="col s12 m6 l6">
-    <div className="card horizontal">
-      <div className="card-image">
-        <img src={images[item.group]} />
-      </div>
-      <div className="card-stacked">
-        <div className="card-content">
-          <p>{item.name}</p>
-        </div>
-        <div className="card-action">
-          <a style={{ color: '#43a047' }} href="#">
-            {item.group}
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <li className="collection-item avatar">
+    <i className={`material-icons circle ${groups[item.group].color}`}>
+      {groups[item.group].icon}
+    </i>
+    <span className="title"> {item.group} </span> <br />
+    {item.name}
+    <a
+      href={groups[item.group].placeLink ? groups[item.group].placeLink : '#!'}
+      target="_blank"
+      className="secondary-content"
+    >
+      <i className="material-icons">location_on</i>
+    </a>
+  </li>
 );
 
 const App: React.FC = () => {
@@ -86,9 +100,11 @@ const App: React.FC = () => {
       </div>
 
       <div className="row">
-        {filtered.map(item => (
-          <ItemCard key={item.name} item={item} />
-        ))}
+        <ul className="collection">
+          {filtered.map(item => (
+            <ItemCard key={item.name} item={item} />
+          ))}
+        </ul>
       </div>
     </div>
   );
