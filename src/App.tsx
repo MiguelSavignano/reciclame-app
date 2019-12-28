@@ -26,7 +26,6 @@ const App: React.FC = () => {
   const [filtered, setFilters] = useState(initState);
 
   const onchange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     let query = event.target.value;
     query = query.replace(/(a|á)/g, '(a|á)');
     query = query.replace(/(e|é)/g, '(e|é)');
