@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@master
 
     - name: Test execute cache-docker
-      run: ./bin/cached-docker -v
+      run: ./bin/cached-docker --print -i registry.heroku.com/reciclame-app/web
 
     - name: Set up Nodejs 10.16.3
       uses: actions/setup-node@master
@@ -50,6 +50,8 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         with:
           args: container:push -a $APP_NAME web
+
+          registry.heroku.com/<app>/<process-type>
 
       - name: release
         uses: actions/heroku@master
