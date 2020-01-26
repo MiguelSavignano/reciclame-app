@@ -41,8 +41,15 @@ jobs:
         with:
           args: container:login
 
+      # - name: push
+      #   run: ./bin/cached-docker -i registry.heroku.com/$APP_NAME/web
+
       - name: push
-        run: ./bin/cached-docker -i registry.heroku.com/$APP_NAME/web
+        uses: actions/heroku@master
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        with:
+          args: container:push -a $APP_NAME web
 
       - name: release
         uses: actions/heroku@master
