@@ -58,7 +58,7 @@ const App: React.FC = () => {
                 type="text"
                 onChange={onchange}
               />
-              <label htmlFor="icon_prefix2">Donde puedo depositar:</label>
+              <label htmlFor="icon_prefix2">Donde puedo depositar</label>
             </div>
           </div>
         </div>
