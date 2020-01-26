@@ -51,8 +51,6 @@ jobs:
         with:
           args: container:push -a $APP_NAME web
 
-          registry.heroku.com/<app>/<process-type>
-
       - name: release
         uses: actions/heroku@master
         env:
