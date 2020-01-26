@@ -11,9 +11,6 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Test execute cache-docker
-      run: ./bin/cached-docker --print -i registry.heroku.com/reciclame-app/web
-
     - name: Set up Nodejs 10.16.3
       uses: actions/setup-node@master
       with:
@@ -45,11 +42,7 @@ jobs:
           args: container:login
 
       - name: push
-        uses: actions/heroku@master
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        with:
-          args: container:push -a $APP_NAME web
+        run: ./bin/cached-docker -i registry.heroku.com/$APP_NAME/web
 
       - name: release
         uses: actions/heroku@master
