@@ -12,7 +12,7 @@ const ItemCard = ({ item }: { item: IItem }): JSX.Element => (
     {item.name}
     <a
       href={groups[item.group].placeLink ? groups[item.group].placeLink : '#!'}
-      target="_blank"
+      target="blank"
       className="secondary-content"
     >
       <i className="material-icons">location_on</i>
